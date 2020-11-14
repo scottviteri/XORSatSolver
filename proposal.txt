@@ -1,4 +1,8 @@
 
+Tseytin transformation to CNF
+ Davis-Putnam, DLL/DPLL
+ Search for choice of variables that satisfy
+
 The boolean satifiability problem can be phrased as checking whether a boolean-valued function on n-variables is in fact the constant 0 function. However, the language that we use when solving SAT problems is incongruous with this interpretation, since a given boolean function may be expressible in multiple ways in terms of logical and and logical or. We see this in the existence of the conjunctive normal form and disjunctive normal forms. But if we were to instead use the algebra of logical and and xor, then we would have a one to one relation between boolean functions and expressions. This leads to a simple and elegant algorithm to check whether a quantifier free formula on boolean variables is satisfiable.
 
 To get an idea of why this may be helpful consider the following workflow. Start with a formula with operations ¬,∧,∨,⇒,⊕(xor), and ⇔, such as (⇒ (∧ x0 x1) (∧ x0 x1)), where x0 and x1 are boolean variables. Transform the formula into one with only ∧ and ⊕. Then simplify the resultant multinomial purely via equational laws of the xor algebra. If the final formula is anything but 0, the constant 0 function, then the original formula is satisfiable.
@@ -23,9 +27,3 @@ Then:
 We have not only shown that the original formula is satisfiable, but also that it is the constant 1 function, or valid!
 
 Even with term sharing, it is possible that formulas will become too large during conversion to xor form since A∨B∨C ⇔ A+B+C+AB+BC+AB+ABC. Also I will have to be careful with application of the distributive law during the multinomial simplification phase since (A+B+C)(D+E+F) results in a formula with 9 terms.
-
-Tseytin transformation to CNF
- Davis-Putnam, DLL/DPLL
- Search for choice of variables that satisfy
-
-
