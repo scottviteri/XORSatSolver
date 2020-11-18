@@ -42,10 +42,6 @@
        (if (eq? 0 level)
            (for*/multiset ([a m1] [b m2]) (mult-aux 1 a b))
            (add m1 m2))]))
-; [(cons (? multiset? m1) b)
-;  (if (eq? 0 level) (for*/multiset ([a m1]) (mult-aux 1 a b )) (add m1 b))]
-; [(cons a (? multiset? m2))
-;  (if (eq? 0 level) (for*/multiset ([b m2]) (mult-aux 1 a b)) (add a m2))]
   (fold (curry mult-aux 0) ⃒ msets))
 
 (define (make-mset x)
