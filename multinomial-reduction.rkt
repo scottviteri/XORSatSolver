@@ -324,4 +324,4 @@ All material to do with representation of integers and polynomials comes from No
 (require rebellion/base/option)
 (require rebellion/type/singleton)]
 
-@chunk[<provide> (provide ⃒ ↥ ↧ add mult)]
+@chunk[<provide> (provide ⃒ ⃒? ↥ ↥? ↥-value ↧ ↧? ↧-value add mult)]

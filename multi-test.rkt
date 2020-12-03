@@ -1,6 +1,7 @@
 #lang racket
 
-(require "polynomial-reduction.rkt")
+(require "multinomial-reduction.rkt")
+(require "multinomial-reduction-utils.rkt")
 
 (require srfi/1)
 (require rebellion/collection/list)
@@ -45,11 +46,11 @@
 ;(time (void (mult a a)))
 ; sparse reps work well
 
-(view-mset-as-polynomial (make-mset '((1 . -1)))) ;"-1 * x^1"
-(view-mset-as-polynomial
+(view-multinomial (make-mset '((1 . -1)))) ;"-1 * x^1"
+(view-multinomial
  (mult (make-mset '((1 . -1))) (make-mset '((1 . 1)))))
 ;"-1 * x^2"
-(view-mset-as-polynomial
+(view-multinomial
  (mult (make-mset '((-1 . 1))) (make-mset '((1 . 1)))))
 ;"1 * x^0"
 
@@ -101,9 +102,9 @@
 ;
 ;(read-mset (exp (make-mset "a") 2))
 
-(read-mset (interpret "-1 + 2 * b + a"))
+(read-mset (interpret "-1 + 2 * v1 + v0"))
 ;'((((1 . 1)) . 2) (((0 . 1)) . 1) (0 . -1))
-(read-mset (interpret "1 + 2*b^3 + -1*a"))
-;'((((1 . 3)) . 2) (((0 . 1)) . -1) (0 . 1))
-(read-mset (interpret "-1*a*c^3*d"))
+(read-mset (interpret "1 + 2*v1^3 + -1*v0"))
+;'((((0 . 1)) . -1) (((1 . 3)) . 2) (0 . 1))
+(read-mset (interpret "-1*v0*v2^3*v3"))
 ;'((((3 . 1) (0 . 1) (2 . 3)) . -1))
